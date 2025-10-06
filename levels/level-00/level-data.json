@@ -1,0 +1,135 @@
+{
+  "level": 0,
+  "title": "Getting Started",
+  "icon": "fas fa-rocket",
+  "theme": "Meet Rubi, learn about your Arduino & Shield",
+  "estimatedTime": "10 min",
+  "difficulty": "beginner",
+  "story": "Welcome to Arduino Adventure! Meet Rubi the Robot, your friendly guide through the world of electronics and coding. In this mission, you'll learn about your Arduino UNO R4 Minima WiFi and the SmartFlex Shield that makes learning fun and easy!",
+  "objectives": [
+    "Meet Rubi the Robot guide",
+    "Learn about Arduino UNO R4",
+    "Understand the SmartFlex Shield",
+    "Complete your first interaction"
+  ],
+  "rubiIntro": "Hi there, future inventor! I'm so excited to go on this adventure with you. Let's start by getting to know your Arduino!",
+  "hint": "Don't worry if this seems new - we'll learn together step by step!",
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "Meet Your Arduino",
+      "description": "This is your Arduino UNO R4 Minima WiFi - it's like a tiny computer that can control lights, sounds, and sensors!",
+      "image": "/assets/images/level-0/arduino-intro.png",
+      "type": "information",
+      "interaction": {
+        "type": "click",
+        "target": "arduino-board",
+        "feedback": "Great! You found the Arduino board!"
+      },
+      "rubiMessage": "This little board is incredibly powerful - it can run programs just like your computer!",
+      "duration": 30
+    },
+    {
+      "id": "step-2",
+      "title": "Discover the SmartFlex Shield",
+      "description": "The SmartFlex Shield sits on top of your Arduino and has lots of fun components like LEDs, buttons, and sensors built right in!",
+      "image": "/assets/images/level-0/shield-intro.png",
+      "type": "information",
+      "interaction": {
+        "type": "hover",
+        "target": "shield-components",
+        "feedback": "Look at all those components! Each one does something special."
+      },
+      "rubiMessage": "The shield makes it easy to experiment without wiring - everything is already connected!",
+      "duration": 45
+    },
+    {
+      "id": "step-3",
+      "title": "Connect Everything",
+      "description": "Carefully place the SmartFlex Shield on top of your Arduino. Make sure all the pins line up perfectly!",
+      "image": "/assets/images/level-0/assembly.png",
+      "type": "assembly",
+      "interaction": {
+        "type": "drag-drop",
+        "source": "shield",
+        "target": "arduino",
+        "feedback": "Perfect alignment! Your setup is ready for programming!"
+      },
+      "rubiMessage": "Excellent work! Now your Arduino and shield are working together as a team!",
+      "duration": 60
+    },
+    {
+      "id": "step-4",
+      "title": "Your First Success",
+      "description": "Congratulations! You've completed your first step in the Arduino Adventure. You're ready to start programming!",
+      "image": "/assets/images/level-0/success.png",
+      "type": "celebration",
+      "interaction": {
+        "type": "button",
+        "target": "complete-level",
+        "feedback": "Level complete! You earned the Explorer Badge!"
+      },
+      "rubiMessage": "Amazing! You're officially an Arduino Explorer now. Ready for your next adventure?",
+      "duration": 30
+    }
+  ],
+  "simulation": {
+    "enabled": false,
+    "description": "This introductory level focuses on hardware familiarization rather than coding."
+  },
+  "blocks": {
+    "enabled": false,
+    "description": "Block programming will begin in Level 1 - Hello Arduino!"
+  },
+  "badge": {
+    "id": "explorer",
+    "name": "Explorer Badge",
+    "icon": "fas fa-compass",
+    "description": "You've started your Arduino journey!",
+    "image": "/assets/badges/explorer-badge.png",
+    "rarity": "common",
+    "points": 100
+  },
+  "certificate": {
+    "enabled": true,
+    "template": "beginner",
+    "title": "Arduino Explorer",
+    "description": "Successfully completed the Getting Started mission"
+  },
+  "nextLevel": {
+    "id": 1,
+    "title": "Hello Arduino!",
+    "description": "Make your first LED blink!"
+  },
+  "resources": [
+    {
+      "type": "pdf",
+      "title": "Arduino Basics Guide",
+      "url": "/assets/pdfs/arduino-basics.pdf",
+      "description": "Complete guide to Arduino fundamentals"
+    },
+    {
+      "type": "video",
+      "title": "SmartFlex Shield Overview",
+      "url": "/assets/videos/smartflex-overview.mp4",
+      "description": "Visual tour of all shield components"
+    }
+  ],
+  "troubleshooting": [
+    {
+      "problem": "I don't see my Arduino",
+      "solution": "Check that your Arduino is connected via USB and the drivers are installed."
+    },
+    {
+      "problem": "The shield doesn't fit",
+      "solution": "Make sure you're aligning the pins correctly. They should slide together smoothly."
+    }
+  ],
+  "metadata": {
+    "created": "2024-01-15",
+    "lastModified": "2024-01-15",
+    "version": "1.0.0",
+    "author": "Arduino Adventure Team",
+    "tags": ["beginner", "introduction", "hardware", "setup"]
+  }
+}

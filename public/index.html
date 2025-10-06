@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Adventure - Learn Electronics with Fun!</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="rubi-loading">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h2>Arduino Adventure</h2>
+            <p>Loading your adventure...</p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container">
+        
+        <!-- Navigation Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot rubi-icon"></i>
+                    <span>Arduino Adventure</span>
+                </div>
+                <div class="user-stats">
+                    <div class="xp-counter">
+                        <i class="fas fa-star"></i>
+                        <span id="total-xp">0 XP</span>
+                    </div>
+                    <div class="level-counter">
+                        <i class="fas fa-trophy"></i>
+                        <span id="levels-completed">0/20</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Start Screen -->
+            <div id="start-screen" class="screen active">
+                <div class="start-hero">
+                    <div class="animated-background">
+                        <div class="led-animation"></div>
+                        <div class="gear-animation"></div>
+                        <div class="wave-animation"></div>
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="main-title">
+                            <span class="title-arduino">Arduino</span>
+                            <span class="title-adventure">Adventure</span>
+                        </h1>
+                        <p class="subtitle">Learn. Play. Create. — The Arduino Way!</p>
+                        <div class="hero-buttons">
+                            <button id="start-adventure-btn" class="btn-primary large">
+                                <i class="fas fa-play"></i>
+                                Start Your Adventure
+                            </button>
+                            <button id="download-booklet-btn" class="btn-secondary large">
+                                <i class="fas fa-download"></i>
+                                Download Activity Booklet
+                            </button>
+                        </div>
+                        <div class="progress-preview">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Ready to begin!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Level Selection Screen -->
+            <div id="level-screen" class="screen">
+                <div class="level-galaxy">
+                    <h2 class="screen-title">Choose Your Mission</h2>
+                    <div class="galaxy-container">
+                        <div id="level-map" class="level-map">
+                            <!-- Levels will be dynamically generated here -->
+                        </div>
+                    </div>
+                    <div class="back-button-container">
+                        <button id="back-to-start" class="btn-ghost">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Start
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Screen -->
+            <div id="activity-screen" class="screen">
+                <div class="activity-container">
+                    <!-- Activity content will be loaded here -->
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Rubi Assistant -->
+        <div id="rubi-assistant" class="rubi-assistant">
+            <div class="rubi-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="rubi-speech-bubble">
+                <p id="rubi-message">Hi! I'm Rubi, your Arduino guide. Ready to start learning?</p>
+            </div>
+        </div>
+
+        <!-- Modal for Badges/Certificates -->
+        <div id="reward-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Congratulations!</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="modal-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Panel -->
+        <div id="settings-panel" class="settings-panel">
+            <div class="settings-header">
+                <h3>Settings</h3>
+                <button class="close-settings-btn" id="close-settings">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="setting-item">
+                <label>Sound Effects</label>
+                <input type="checkbox" id="sound-toggle" checked>
+            </div>
+            <div class="setting-item">
+                <label>Voice Narration</label>
+                <input type="checkbox" id="voice-toggle" checked>
+            </div>
+            <div class="setting-item">
+                <label>Animation Speed</label>
+                <select id="animation-speed">
+                    <option value="slow">Slow</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="fast">Fast</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Student Info Modal -->
+        <div id="student-info-modal" class="modal" style="display: none;">
+            <div class="modal-content student-info-modal">
+                <div class="modal-header">
+                    <h3><i class="fas fa-certificate"></i> Certificate Information</h3>
+                    <button class="close-modal" onclick="app.closeStudentInfoModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Please provide your details for the certificate:</p>
+                    <form id="student-info-form">
+                        <div class="form-group">
+                            <label for="student-name">
+                                <i class="fas fa-user"></i> Full Name *
+                            </label>
+                            <input type="text" id="student-name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-class">
+                                <i class="fas fa-users"></i> Class/Grade
+                            </label>
+                            <input type="text" id="student-class" placeholder="e.g., Grade 5, Class A">
+                        </div>
+                        <div class="form-group">
+                            <label for="student-school">
+                                <i class="fas fa-school"></i> School Name
+                            </label>
+                            <input type="text" id="student-school" placeholder="Enter your school name">
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-secondary" onclick="app.closeStudentInfoModal()">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-download"></i> Generate Certificate
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Settings Button -->
+    <button id="settings-btn" class="floating-btn">
+        <i class="fas fa-cog"></i>
+    </button>
+    
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/rubi.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/levels.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/rewards.js"></script>
+    <script src="js/certificate.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            window.app = new ArduinoAdventure();
+        });
+    </script>
+</body>
+</html>

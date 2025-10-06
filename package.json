@@ -1,0 +1,25 @@
+{
+  "name": "arduino-adventure",
+  "version": "1.0.0",
+  "description": "A gamified, interactive learning platform for kids to learn Arduino programming with SmartFlex Shield",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "http-server public -p 8080 -o",
+    "dev": "live-server public --port=8080",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "node scripts/build-css.js",
+    "build:js": "node scripts/build-js.js",
+    "serve": "npm start"
+  },
+  "keywords": ["arduino", "education", "kids", "programming", "blocks", "gamification"],
+  "author": "Arduino Adventure Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {
+    "blockly": "^10.2.2",
+    "canvas": "^2.11.2"
+  }
+}
